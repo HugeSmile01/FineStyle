@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>FineStyle Framework Demo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="Fs-2.fs-2.0.min.css">
+  <script defer src="fs-2.0.min.js"></script>
+  <style>
+    .menu-toggle {
+      display: none;
+      font-size: 24px;
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-links.active {
+      display: flex;
+      flex-direction: column;
+      gap: var(--fs-space-sm);
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="container">
+      <h1>FineStyle</h1>
+      <button class="menu-toggle">☰</button>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="section flex flex-col flex-center text-center fade-in-up">
+    <h2 class="h2 mb-md">Design with Elegance</h2>
+    <p class="mb-md">Build minimalist and professional web interfaces with ease.</p>
+    <a href="#features" class="btn">Explore Features</a>
+  </section>
+
+  <!-- Features -->
+  <section class="section container grid grid-cols-3" id="features">
+    <div class="card animate-on-scroll">
+      <div class="card-body">
+        <h3 class="card-title">Responsive Layout</h3>
+        <p class="card-text">Adapts beautifully to all devices and screen sizes.</p>
+      </div>
+    </div>
+    <div class="card animate-on-scroll">
+      <div class="card-body">
+        <h3 class="card-title">Modern UI</h3>
+        <p class="card-text">Polished, elegant components built for real-world use.</p>
+      </div>
+    </div>
+    <div class="card animate-on-scroll">
+      <div class="card-body">
+        <h3 class="card-title">Built-in Animation</h3>
+        <p class="card-text">Scroll reveals, transitions, and micro-interactions included.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section flex flex-col flex-center text-center" id="about">
+    <h2 class="h2 mb-md">About FineStyle</h2>
+    <p class="mb-md" style="max-width: 600px;">FineStyle is a lightweight and adaptive CSS framework created by John Rish Ladica. It empowers developers to design fast, clean, and visually pleasing web apps with ease.</p>
+    <a href="#contact" class="btn">Get in Touch</a>
+  </section>
+
+  <!-- Contact -->
+  <section class="section container" id="contact">
+    <h2 class="h2 mb-md text-center">Contact Us</h2>
+    <form class="grid grid-cols-2 gap-md animate-on-scroll">
+      <input type="text" placeholder="Your Name" required>
+      <input type="email" placeholder="Email Address" required>
+      <textarea placeholder="Your Message" rows="5" class="grid-cols-2"></textarea>
+      <button type="submit" class="btn grid-cols-2">Send Message</button>
+    </form>
+  </section>
+
+</body>
+</html>

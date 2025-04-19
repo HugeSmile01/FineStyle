@@ -1,0 +1,57 @@
+<!-- SVG Sprite Sheet: icons-sprite.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none">
+  <!-- Menu Icon -->
+  <symbol id="icon-menu" viewBox="0 0 24 24">
+    <path d="M3 6h18v2H3V6zm0 5h18v2H3v-2zm0 5h18v2H3v-2z" />
+  </symbol>
+
+  <!-- Home Icon -->
+  <symbol id="icon-home" viewBox="0 0 24 24">
+    <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z" />
+  </symbol>
+
+  <!-- Features (Star) Icon -->
+  <symbol id="icon-feature" viewBox="0 0 24 24">
+    <path d="M12 17.27L18.18 21 16.54 13.97 22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
+  </symbol>
+
+  <!-- Contact (Envelope) Icon -->
+  <symbol id="icon-contact" viewBox="0 0 24 24">
+    <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM20 8l-8 5-8-5V6l8 5 8-5v2z" />
+  </symbol>
+
+  <!-- Search (Magnifier) Icon -->
+  <symbol id="icon-search" viewBox="0 0 24 24">
+    <path d="M15.5 14h-.79l-.28-.27A6.471 6.471 0 0016 9.5 6.5 6.5 0 109.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zM9.5 14a4.5 4.5 0 114.5-4.5A4.5 4.5 0 019.5 14z" />
+  </symbol>
+
+  <!-- Twitter Icon -->
+  <symbol id="icon-twitter" viewBox="0 0 24 24">
+    <path d="M22.46 6c-.77.35-1.6.59-2.46.69a4.27 4.27 0 001.88-2.37 8.65 8.65 0 01-2.72 1.04 4.27 4.27 0 00-7.29 3.9A12.11 12.11 0 013.1 4.82a4.27 4.27 0 001.33 5.67 4.26 4.26 0 01-1.61-.45v.05a4.27 4.27 0 003.42 4.18 4.27 4.27 0 01-1.92.07 4.27 4.27 0 003.99 2.96A8.56 8.56 0 012 18.54a12.07 12.07 0 006.53 1.91c7.84 0 12.13-6.5 12.13-12.13 0-.18-.01-.36-.02-.54A8.66 8.66 0 0024 4.56a8.5 8.5 0 01-2.46.67z" />
+  </symbol>
+
+  <!-- Facebook Icon -->
+  <symbol id="icon-facebook" viewBox="0 0 24 24">
+    <path d="M22 12a10 10 0 10-11.5 9.87v-6.99h-2.3V12h2.3V9.8c0-2.28 1.36-3.54 3.44-3.54.99 0 2.03.18 2.03.18v2.23h-1.14c-1.13 0-1.48.7-1.48 1.42V12h2.52l-.4 2.88h-2.12v6.99A10 10 0 0022 12z" />
+  </symbol>
+
+  <!-- LinkedIn Icon -->
+  <symbol id="icon-linkedin" viewBox="0 0 24 24">
+    <path d="M19 3A2 2 0 0121 5v14a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h14zm-11 14h3v-7H8v7zm1.5-8.1a1.6 1.6 0 100-3.2 1.6 1.6 0 000 3.2zm4.5 8.1h3v-3.5a1.75 1.75 0 013.5 0V17h3v-7h-3v1.3a3.75 3.75 0 00-3.5-1.9 3.75 3.75 0 00-3.5 3.75V17z" />
+  </symbol>
+
+  <!-- Chart Marker Icon -->
+  <symbol id="icon-chart-marker" viewBox="0 0 24 24">
+    <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 110-5 2.5 2.5 0 010 5z" />
+  </symbol>
+
+  <!-- Tooltip Arrow Icon -->
+  <symbol id="icon-tooltip" viewBox="0 0 24 24">
+    <path d="M6 9l6 6 6-6H6z" />
+  </symbol>
+</svg>
+
+<!-- Usage Example -->
+<!--
+<svg class="fs-icon"><use xlink:href="#icon-menu" /></svg>
+-->

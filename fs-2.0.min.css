@@ -1,0 +1,467 @@
+/* ========== Minimalist modern UI Framework ========== */
+/* Total lines: 623 */
+:root {
+  /* Extended Color System */
+  --primary-100: #e3f2fd;
+  --primary-300: #64b5f6;
+  --primary-500: #2196f3;
+  --primary-700: #1976d2;
+  --primary-900: #0d47a1;
+  --surface-0: #ffffff;
+  --surface-50: #fafafa;
+  --surface-100: #f5f5f5;
+  --surface-200: #eeeeee;
+  --surface-300: #e0e0e0;
+  --surface-900: #212121;
+  --accent-500: #ff4081;
+  --success-500: #4caf50;
+  --warning-500: #ff9800;
+  --error-500: #f44336;
+  --code-background: #1e1e1e;
+  
+  /* Typography */
+  --font-base: 1rem;
+  --font-scale: 1.25;
+  --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
+  --font-sans: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+
+  /* Spacing */
+  --space-unit: 1rem;
+  --radius-base: 6px;
+}
+
+/* ========== Enhanced Base Styles ========== */
+body {
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  background: var(--surface-50);
+  color: var(--surface-900);
+}
+
+/* ========== Advanced Navigation System ========== */
+.fs-sidebar-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+}
+
+.fs-sidebar {
+  background: var(--surface-0);
+  border-right: 1px solid var(--surface-200);
+  padding: var(--space-unit);
+  position: sticky;
+  top: 0;
+  height: 100vh;
+}
+
+.fs-nav-group {
+  margin-bottom: calc(var(--space-unit) * 1.5);
+}
+
+.fs-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--radius-base);
+  color: var(--surface-900);
+  transition: all 0.2s ease;
+}
+
+.fs-nav-item:hover {
+  background: var(--primary-100);
+  color: var(--primary-700);
+}
+
+.fs-nav-item.active {
+  background: var(--primary-500);
+  color: white;
+}
+
+/* ========== Code Editor Interface ========== */
+.fs-code-container {
+  background: var(--code-background);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.fs-code-header {
+  padding: 0.75rem;
+  background: #252526;
+  display: flex;
+  gap: 0.5rem;
+  border-bottom: 1px solid #333;
+}
+
+.fs-code-window-control {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+
+.fs-code-content {
+  padding: 1.5rem;
+  font-family: var(--font-mono);
+  color: #d4d4d4;
+  white-space: pre-wrap;
+}
+
+.fs-code-keyword { color: #569cd6 }
+.fs-code-function { color: #dcdcaa }
+.fs-code-string { color: #ce9178 }
+
+/* ========== Enhanced Data Grid ========== */
+.fs-data-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1px;
+  background: var(--surface-200);
+  border-radius: var(--radius-base);
+  overflow: hidden;
+}
+
+.fs-grid-cell {
+  background: var(--surface-0);
+  padding: 1rem;
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.fs-grid-header {
+  font-weight: 600;
+  color: var(--primary-500);
+  border-bottom: 2px solid var(--primary-100);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+/* ========== Context Menu System ========== */
+.fs-context-menu {
+  position: fixed;
+  background: var(--surface-0);
+  border-radius: var(--radius-base);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+  min-width: 200px;
+  z-index: 1000;
+  padding: 0.5rem 0;
+}
+
+.fs-menu-item {
+  padding: 0.75rem 1.5rem;
+  color: var(--surface-900);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fs-menu-item:hover {
+  background: var(--surface-100);
+  color: var(--primary-500);
+}
+
+/* ========== Status Bar Component ========== */
+.fs-status-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem 1rem;
+  background: var(--surface-900);
+  color: var(--surface-50);
+  font-size: 0.875rem;
+}
+
+.fs-status-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.fs-status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--success-500);
+}
+
+/* ========== Advanced Form Controls ========== */
+.fs-toggle-switch {
+  position: relative;
+  width: 44px;
+  height: 24px;
+}
+
+.fs-toggle-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--surface-200);
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.fs-toggle-thumb {
+  position: absolute;
+  left: 2px;
+  top: 2px;
+  width: 20px;
+  height: 20px;
+  background: var(--surface-0);
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+input:checked ~ .fs-toggle-track {
+  background: var(--primary-500);
+}
+
+input:checked ~ .fs-toggle-thumb {
+  transform: translateX(20px);
+}
+
+/* ========== Enhanced Terminal Interface ========== */
+.fs-terminal {
+  background: #1a1a1a;
+  border-radius: var(--radius-base);
+  padding: 1rem;
+  font-family: var(--font-mono);
+  color: #00ff00;
+}
+
+.fs-terminal-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  color: #666;
+}
+
+.fs-terminal-prompt {
+  color: #00ff00;
+  margin-right: 0.5rem;
+}
+
+/* ========== Advanced Tooltip System ========== */
+.fs-tooltip {
+  position: absolute;
+  background: var(--surface-900);
+  color: var(--surface-50);
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-base);
+  font-size: 0.875rem;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.fs-tooltip::after {
+  content: "";
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: inherit;
+  transform: rotate(45deg);
+}
+
+/* ========== Dynamic Tabs System ========== */
+.fs-tab-group {
+  border-bottom: 1px solid var(--surface-200);
+}
+
+.fs-tab {
+  padding: 0.75rem 1.5rem;
+  border: none;
+  background: none;
+  color: var(--surface-600);
+  position: relative;
+  cursor: pointer;
+}
+
+.fs-tab.active::after {
+  content: "";
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--primary-500);
+}
+
+/* ========== Enhanced Command Palette ========== */
+.fs-command-palette {
+  position: fixed;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  background: var(--surface-0);
+  border-radius: var(--radius-base);
+  box-shadow: var(--shadow-lg);
+  overflow: hidden;
+}
+
+.fs-command-input {
+  width: 100%;
+  padding: 1.5rem;
+  border: none;
+  font-size: 1.25rem;
+}
+
+.fs-command-list {
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.fs-command-item {
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.fs-command-item:hover {
+  background: var(--surface-100);
+}
+
+/* ========== Responsive Adjustments ========== */
+@media (max-width: 1024px) {
+  .fs-sidebar-layout {
+    grid-template-columns: 1fr;
+  }
+  
+  .fs-sidebar {
+    height: auto;
+    position: static;
+    border-right: none;
+    border-bottom: 1px solid var(--surface-200);
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --font-base: 0.875rem;
+  }
+  
+  .fs-data-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .fs-command-palette {
+    width: 90%;
+  }
+}
+
+/* ========== Extended Utility Classes ========== */
+/* Spacing */
+.fs-space-1 { margin-bottom: 0.25rem }
+.fs-space-4 { margin-bottom: 1rem }
+.fs-space-8 { margin-bottom: 2rem }
+
+/* Text */
+.fs-text-code { font-family: var(--font-mono) }
+.fs-text-gradient {
+  background: linear-gradient(45deg, var(--primary-500), var(--accent-500));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Interactive */
+.fs-clickable {
+  cursor: pointer;
+  transition: opacity 0.2s ease;
+}
+
+.fs-clickable:hover {
+  opacity: 0.8;
+}
+
+/* ========== Animation Enhancements ========== */
+.fs-animate-float {
+  animation: fs-float 3s ease-in-out infinite;
+}
+
+@keyframes fs-float {
+  0%, 100% { transform: translateY(0) }
+  50% { transform: translateY(-10px) }
+}
+
+.fs-animate-fade-in {
+  animation: fs-fade-in 0.3s ease-out;
+}
+
+@keyframes fs-fade-in {
+  from { opacity: 0; transform: translateY(10px) }
+  to { opacity: 1; transform: translateY(0) }
+}
+
+/* ========== Advanced Empty States ========== */
+.fs-empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  color: var(--surface-300);
+}
+
+.fs-empty-state-icon {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* ========== Enhanced Badge System ========== */
+.fs-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.fs-badge-primary {
+  background: var(--primary-100);
+  color: var(--primary-700);
+}
+
+.fs-badge-success {
+  background: #e8f5e9;
+  color: var(--success-500);
+}
+
+/* ========== File Tree Component ========== */
+.fs-file-tree {
+  padding-left: 1.5rem;
+}
+
+.fs-tree-node {
+  padding: 0.25rem 0;
+  cursor: pointer;
+}
+
+.fs-tree-node:hover {
+  background: var(--surface-100);
+}
+
+.fs-tree-icon {
+  margin-right: 0.5rem;
+  color: var(--surface-300);
+}
+
+/* ========== Extended Dark Theme ========== */
+[data-theme="dark"] {
+  --surface-50: #2d2d2d;
+  --surface-100: #404040;
+  --surface-900: #f8f9fa;
+  --code-background: #1e1e1e;
+  color: #e0e0e0;
+}
+
+[data-theme="dark"] .fs-code-header {
+  background: #333;
+  border-color: #444;
+}
