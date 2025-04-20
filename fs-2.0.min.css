@@ -465,3 +465,46 @@ input:checked ~ .fs-toggle-thumb {
   background: #333;
   border-color: #444;
 }
+
+/* ========== Advanced Animation and Transitions ========== */
+.fs-animate-slide-in {
+  animation: fs-slide-in 0.5s ease-out;
+}
+
+@keyframes fs-slide-in {
+  from { transform: translateX(-100%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+.fs-animate-zoom-in {
+  animation: fs-zoom-in 0.5s ease-out;
+}
+
+@keyframes fs-zoom-in {
+  from { transform: scale(0.5); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* ========== Improved Component Customization ========== */
+:root {
+  --custom-color-primary: var(--primary-500);
+  --custom-color-accent: var(--accent-500);
+  --custom-font-family: var(--font-sans);
+  --custom-spacing-unit: var(--space-unit);
+}
+
+/* ========== Utility Classes for Common Design Patterns ========== */
+/* Margin */
+.fs-margin-1 { margin: 0.25rem }
+.fs-margin-4 { margin: 1rem }
+.fs-margin-8 { margin: 2rem }
+
+/* Padding */
+.fs-padding-1 { padding: 0.25rem }
+.fs-padding-4 { padding: 1rem }
+.fs-padding-8 { padding: 2rem }
+
+/* Text Alignment */
+.fs-text-left { text-align: left }
+.fs-text-center { text-align: center }
+.fs-text-right { text-align: right }
