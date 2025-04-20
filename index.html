@@ -25,6 +25,19 @@
         display: block;
       }
     }
+    nav {
+      position: sticky;
+      top: 0;
+      background: var(--surface-0);
+      z-index: 1000;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    .active {
+      background: var(--primary-500);
+      color: white;
+    }
   </style>
 </head>
 <body>
@@ -33,7 +46,9 @@
   <nav class="fs-header">
     <div class="container">
       <h1>FineStyle</h1>
-      <button class="menu-toggle">☰</button>
+      <button class="menu-toggle">
+        <svg class="fs-icon"><use xlink:href="#icon-menu" /></svg>
+      </button>
       <div class="nav-links">
         <a href="#features" class="fs-nav-item">Features</a>
         <a href="#about" class="fs-nav-item">About</a>
@@ -88,6 +103,38 @@
       <button type="submit" class="fs-button fs-grid-cell">Send Message</button>
     </form>
   </section>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navLinks = document.querySelector('.nav-links');
+
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
+
+      const sections = document.querySelectorAll('section');
+      const navItems = document.querySelectorAll('.fs-nav-item');
+
+      window.addEventListener('scroll', () => {
+        let current = '';
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          if (pageYOffset >= sectionTop - 60) {
+            current = section.getAttribute('id');
+          }
+        });
+
+        navItems.forEach(item => {
+          item.classList.remove('active');
+          if (item.getAttribute('href').includes(current)) {
+            item.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
 
 </body>
 </html>
