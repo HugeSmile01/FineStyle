@@ -47,10 +47,10 @@
   <nav class="fs-header">
     <div class="container">
       <h1>FineStyle</h1>
-      <button class="menu-toggle">
+      <button class="menu-toggle" id="menu-toggle">
         <i data-feather="menu"></i>
       </button>
-      <div class="nav-links">
+      <div class="nav-links" id="nav-links">
         <a href="#features" class="fs-nav-item">Features</a>
         <a href="#about" class="fs-nav-item">About</a>
         <a href="#contact" class="fs-nav-item">Contact</a>
@@ -107,8 +107,8 @@
 
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const menuToggle = document.querySelector('.menu-toggle');
-      const navLinks = document.querySelector('.nav-links');
+      const menuToggle = document.querySelector('#menu-toggle');
+      const navLinks = document.querySelector('#nav-links');
 
       menuToggle.addEventListener('click', () => {
         navLinks.classList.toggle('active');
