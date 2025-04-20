@@ -30,14 +30,14 @@
 <body>
 
   <!-- Navbar -->
-  <nav class="navbar">
+  <nav class="fs-header">
     <div class="container">
       <h1>FineStyle</h1>
       <button class="menu-toggle">☰</button>
       <div class="nav-links">
-        <a href="#features">Features</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
+        <a href="#features" class="fs-nav-item">Features</a>
+        <a href="#about" class="fs-nav-item">About</a>
+        <a href="#contact" class="fs-nav-item">Contact</a>
       </div>
     </div>
   </nav>
@@ -46,27 +46,27 @@
   <section class="section flex flex-col flex-center text-center fade-in-up">
     <h2 class="h2 mb-md">Design with Elegance</h2>
     <p class="mb-md">Build minimalist and professional web interfaces with ease.</p>
-    <a href="#features" class="btn">Explore Features</a>
+    <a href="#features" class="fs-button">Explore Features</a>
   </section>
 
   <!-- Features -->
-  <section class="section container grid grid-cols-3" id="features">
-    <div class="card animate-on-scroll">
-      <div class="card-body">
-        <h3 class="card-title">Responsive Layout</h3>
-        <p class="card-text">Adapts beautifully to all devices and screen sizes.</p>
+  <section class="section container fs-data-grid" id="features">
+    <div class="fs-card animate-on-scroll">
+      <div class="fs-card-body">
+        <h3 class="fs-card-title">Responsive Layout</h3>
+        <p class="fs-card-text">Adapts beautifully to all devices and screen sizes.</p>
       </div>
     </div>
-    <div class="card animate-on-scroll">
-      <div class="card-body">
-        <h3 class="card-title">Modern UI</h3>
-        <p class="card-text">Polished, elegant components built for real-world use.</p>
+    <div class="fs-card animate-on-scroll">
+      <div class="fs-card-body">
+        <h3 class="fs-card-title">Modern UI</h3>
+        <p class="fs-card-text">Polished, elegant components built for real-world use.</p>
       </div>
     </div>
-    <div class="card animate-on-scroll">
-      <div class="card-body">
-        <h3 class="card-title">Built-in Animation</h3>
-        <p class="card-text">Scroll reveals, transitions, and micro-interactions included.</p>
+    <div class="fs-card animate-on-scroll">
+      <div class="fs-card-body">
+        <h3 class="fs-card-title">Built-in Animation</h3>
+        <p class="fs-card-text">Scroll reveals, transitions, and micro-interactions included.</p>
       </div>
     </div>
   </section>
@@ -75,17 +75,17 @@
   <section class="section flex flex-col flex-center text-center" id="about">
     <h2 class="h2 mb-md">About FineStyle</h2>
     <p class="mb-md" style="max-width: 600px;">FineStyle is a lightweight and adaptive CSS framework created by John Rish Ladica. It empowers developers to design fast, clean, and visually pleasing web apps with ease.</p>
-    <a href="#contact" class="btn">Get in Touch</a>
+    <a href="#contact" class="fs-button">Get in Touch</a>
   </section>
 
   <!-- Contact -->
   <section class="section container" id="contact">
     <h2 class="h2 mb-md text-center">Contact Us</h2>
-    <form class="grid grid-cols-2 gap-md animate-on-scroll">
+    <form class="fs-data-grid animate-on-scroll">
       <input type="text" placeholder="Your Name" required>
       <input type="email" placeholder="Email Address" required>
-      <textarea placeholder="Your Message" rows="5" class="grid-cols-2"></textarea>
-      <button type="submit" class="btn grid-cols-2">Send Message</button>
+      <textarea placeholder="Your Message" rows="5" class="fs-grid-cell"></textarea>
+      <button type="submit" class="fs-button fs-grid-cell">Send Message</button>
     </form>
   </section>
 
