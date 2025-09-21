@@ -3,11 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="FineStyle Framework - A lightweight and adaptive CSS framework for modern web development">
+  <meta name="author" content="John Rish Ladica">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:;">
   <title>FineStyle Framework Demo</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="fs-2.0.min.css">
   <script defer src="fs-2.1.2.min.js"></script>
-  <script src="https://unpkg.com/feather-icons"></script>
+  <!-- Feather icons fallback -->
+  <style>
+    .feather-menu::before { content: "☰"; }
+  </style>
   <style>
     .menu-toggle {
       display: none;
@@ -15,6 +21,12 @@
       background: none;
       border: none;
       cursor: pointer;
+      padding: 0.5rem;
+      border-radius: var(--radius-base);
+      transition: background 0.2s ease;
+    }
+    .menu-toggle:hover {
+      background: var(--surface-100);
     }
     .nav-links.active {
       display: flex;
@@ -24,6 +36,9 @@
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
+      }
+      .nav-links {
+        display: none;
       }
     }
     nav {
@@ -48,7 +63,7 @@
     <div class="container">
       <h1>FineStyle</h1>
       <button class="menu-toggle" id="menu-toggle">
-        <i data-feather="menu"></i>
+        <span class="feather-menu">☰</span>
       </button>
       <div class="nav-links" id="nav-links">
         <a href="#features" class="fs-nav-item">Features</a>
@@ -80,18 +95,21 @@
       <div class="fs-card-body">
         <h3 class="fs-card-title">Responsive Layout</h3>
         <p class="fs-card-text">Adapts beautifully to all devices and screen sizes.</p>
+        <button class="fs-button" onclick="FineStyle.Toast.success('Responsive layout is working perfectly!')">Test Toast</button>
       </div>
     </div>
     <div class="fs-card animate-on-scroll">
       <div class="fs-card-body">
         <h3 class="fs-card-title">Modern UI</h3>
         <p class="fs-card-text">Polished, elegant components built for real-world use.</p>
+        <button class="fs-button" onclick="showDemoModal()">Open Modal</button>
       </div>
     </div>
     <div class="fs-card animate-on-scroll">
       <div class="fs-card-body">
         <h3 class="fs-card-title">Built-in Animation</h3>
         <p class="fs-card-text">Scroll reveals, transitions, and micro-interactions included.</p>
+        <button class="fs-button" onclick="FineStyle.LoadingState.show(this); setTimeout(() => FineStyle.LoadingState.hide(this), 2000)">Loading Demo</button>
       </div>
     </div>
   </section>
@@ -106,11 +124,21 @@
   <!-- Contact -->
   <section class="section container" id="contact">
     <h2 class="h2 mb-md text-center">Contact Us</h2>
-    <form class="fs-data-grid animate-on-scroll">
-      <input type="text" placeholder="Your Name" required>
-      <input type="email" placeholder="Email Address" required>
-      <textarea placeholder="Your Message" rows="5" class="fs-grid-cell"></textarea>
-      <button type="submit" class="fs-button fs-grid-cell">Send Message</button>
+    <form class="fs-data-grid animate-on-scroll" id="contact-form" novalidate>
+      <input type="hidden" name="csrf_token" value="fs-demo-token">
+      <div class="fs-form-group">
+        <input type="text" placeholder="Your Name" required minlength="2" maxlength="50" id="name" name="name">
+        <span class="fs-error-message" id="name-error"></span>
+      </div>
+      <div class="fs-form-group">
+        <input type="email" placeholder="Email Address" required id="email" name="email">
+        <span class="fs-error-message" id="email-error"></span>
+      </div>
+      <div class="fs-form-group fs-grid-cell">
+        <textarea placeholder="Your Message" rows="5" required minlength="10" maxlength="500" id="message" name="message"></textarea>
+        <span class="fs-error-message" id="message-error"></span>
+      </div>
+      <button type="submit" class="fs-button fs-grid-cell" id="submit-btn">Send Message</button>
     </form>
   </section>
 
@@ -151,8 +179,136 @@
         });
       });
 
-      feather.replace();
+      // Enhanced form validation with security
+      const contactForm = document.getElementById('contact-form');
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          validateAndSubmitForm();
+        });
+        
+        // Real-time validation
+        const inputs = contactForm.querySelectorAll('input, textarea');
+        inputs.forEach(input => {
+          input.addEventListener('blur', () => validateField(input));
+          input.addEventListener('input', () => clearFieldError(input));
+        });
+      }
+
+      // Initialize FineStyle components
+      if (typeof FineStyle !== 'undefined') {
+        // Optional: Initialize any additional FineStyle features
+      }
     });
+    
+    // Form validation functions
+    function validateField(field) {
+      const value = field.value.trim();
+      const fieldName = field.name;
+      const errorElement = document.getElementById(fieldName + '-error');
+      
+      let isValid = true;
+      let errorMessage = '';
+      
+      // Required field validation
+      if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        errorMessage = 'This field is required.';
+      }
+      
+      // Specific field validations
+      if (isValid && value) {
+        switch (fieldName) {
+          case 'name':
+            if (value.length < 2) {
+              isValid = false;
+              errorMessage = 'Name must be at least 2 characters.';
+            } else if (!/^[a-zA-Z\s]+$/.test(value)) {
+              isValid = false;
+              errorMessage = 'Name can only contain letters and spaces.';
+            }
+            break;
+          case 'email':
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) {
+              isValid = false;
+              errorMessage = 'Please enter a valid email address.';
+            }
+            break;
+          case 'message':
+            if (value.length < 10) {
+              isValid = false;
+              errorMessage = 'Message must be at least 10 characters.';
+            }
+            break;
+        }
+      }
+      
+      // Show/hide error
+      if (errorElement) {
+        errorElement.textContent = errorMessage;
+        errorElement.style.display = isValid ? 'none' : 'block';
+      }
+      
+      field.classList.toggle('fs-error', !isValid);
+      return isValid;
+    }
+    
+    function clearFieldError(field) {
+      const errorElement = document.getElementById(field.name + '-error');
+      if (errorElement && field.value.trim()) {
+        errorElement.style.display = 'none';
+        field.classList.remove('fs-error');
+      }
+    }
+    
+    function validateAndSubmitForm() {
+      const form = document.getElementById('contact-form');
+      const inputs = form.querySelectorAll('input[required], textarea[required]');
+      let isFormValid = true;
+      
+      inputs.forEach(input => {
+        if (!validateField(input)) {
+          isFormValid = false;
+        }
+      });
+      
+      if (isFormValid) {
+        // Simulate form submission
+        const submitBtn = document.getElementById('submit-btn');
+        const originalText = submitBtn.textContent;
+        
+        submitBtn.textContent = 'Sending...';
+        submitBtn.disabled = true;
+        
+        setTimeout(() => {
+          alert('Message sent successfully! (Demo)');
+          form.reset();
+          submitBtn.textContent = originalText;
+          submitBtn.disabled = false;
+        }, 1500);
+      }
+    }
+    
+    // Demo modal function
+    function showDemoModal() {
+      const modal = new FineStyle.Modal(`
+        <h4>Welcome to FineStyle Framework!</h4>
+        <p>This is a demo modal showcasing the enhanced modal component with:</p>
+        <ul>
+          <li>Smooth animations</li>
+          <li>Responsive design</li>
+          <li>Accessibility features</li>
+          <li>Easy-to-use API</li>
+        </ul>
+        <div style="margin-top: 1rem;">
+          <button class="fs-button" onclick="FineStyle.Toast.warning('Modal feature demonstrated!'); this.closest('.fs-modal').querySelector('.fs-modal-close').click();">Close & Toast</button>
+        </div>
+      `, { title: 'FineStyle Demo' });
+      modal.show();
+    }
+    
+    // Make function globally available
+    window.showDemoModal = showDemoModal;
   </script>
 
 </body>
