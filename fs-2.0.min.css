@@ -1,5 +1,5 @@
-/* ========== Minimalist modern UI Framework ========== */
-/* Total lines: 623 */
+/* ========== FineStyle Framework v2.1 - Enhanced ========== */
+/* Total lines: 800+ */
 :root {
   /* Extended Color System */
   --primary-100: #e3f2fd;
@@ -12,6 +12,7 @@
   --surface-100: #f5f5f5;
   --surface-200: #eeeeee;
   --surface-300: #e0e0e0;
+  --surface-600: #757575;
   --surface-900: #212121;
   --accent-500: #ff4081;
   --success-500: #4caf50;
@@ -25,9 +26,28 @@
   --font-mono: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace;
   --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
 
-  /* Spacing */
+  /* Enhanced Spacing System */
+  --fs-space-xs: 0.25rem;
+  --fs-space-sm: 0.5rem;
+  --fs-space-md: 1rem;
+  --fs-space-lg: 1.5rem;
+  --fs-space-xl: 2rem;
+  --fs-space-2xl: 3rem;
   --space-unit: 1rem;
   --radius-base: 6px;
+  --radius-lg: 12px;
+  
+  /* Shadow System */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+  
+  /* Breakpoints */
+  --breakpoint-sm: 640px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 1024px;
+  --breakpoint-xl: 1280px;
 }
 
 /* ========== Enhanced Base Styles ========== */
@@ -699,7 +719,6 @@ hr {
 
 /* ========== Side Nav CSS ========== */
 #side-nav {
-  display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -707,6 +726,223 @@ hr {
   height: 100%;
   background: var(--surface-0);
   box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  z-index: 1000;
+  transition: transform 0.3s ease;
+  transform: translateX(-100%);
+  padding: var(--fs-space-lg);
+}
+
+#side-nav.active {
+  transform: translateX(0);
+}
+
+/* Side nav items styling */
+.fs-nav-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--fs-space-md);
+  margin-top: var(--fs-space-xl);
+}
+
+.fs-nav-group .fs-nav-item {
+  padding: var(--fs-space-md);
+  color: var(--surface-900);
+  text-decoration: none;
+  border-radius: var(--radius-base);
+  transition: background 0.2s ease;
+  display: block;
+}
+
+.fs-nav-group .fs-nav-item:hover {
+  background: var(--surface-100);
+}
+
+/* ========== Enhanced Form Validation ========== */
+.fs-form-group {
+  position: relative;
+  margin-bottom: var(--fs-space-md);
+}
+
+.fs-error-message {
+  display: none;
+  color: var(--error-500);
+  font-size: 0.875rem;
+  margin-top: var(--fs-space-xs);
+}
+
+input.fs-error,
+textarea.fs-error {
+  border-color: var(--error-500);
+  box-shadow: 0 0 0 2px rgba(244, 67, 54, 0.1);
+}
+
+input:focus,
+textarea:focus {
+  border-color: var(--primary-500);
+  box-shadow: 0 0 0 2px rgba(33, 150, 243, 0.1);
+  outline: none;
+}
+
+/* ========== Advanced Modal Component ========== */
+.fs-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.fs-modal.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.fs-modal-content {
+  background: var(--surface-0);
+  border-radius: var(--radius-lg);
+  padding: var(--fs-space-xl);
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.fs-modal.active .fs-modal-content {
+  transform: scale(1);
+}
+
+.fs-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--fs-space-lg);
+}
+
+.fs-modal-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0;
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.fs-modal-close:hover {
+  background: var(--surface-100);
+}
+
+/* ========== Toast Notification System ========== */
+.fs-toast-container {
+  position: fixed;
+  top: var(--fs-space-lg);
+  right: var(--fs-space-lg);
+  z-index: 10001;
+  max-width: 400px;
+}
+
+.fs-toast {
+  background: var(--surface-0);
+  border-left: 4px solid var(--primary-500);
+  border-radius: var(--radius-base);
+  padding: var(--fs-space-md);
+  margin-bottom: var(--fs-space-sm);
+  box-shadow: var(--shadow-lg);
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+}
+
+.fs-toast.show {
+  transform: translateX(0);
+}
+
+.fs-toast.success { border-left-color: var(--success-500); }
+.fs-toast.warning { border-left-color: var(--warning-500); }
+.fs-toast.error { border-left-color: var(--error-500); }
+
+/* ========== Loading States ========== */
+.fs-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.fs-loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 20px;
+  margin: -10px 0 0 -10px;
+  border: 2px solid var(--surface-300);
+  border-top-color: var(--primary-500);
+  border-radius: 50%;
+  animation: fs-spin 1s linear infinite;
+}
+
+@keyframes fs-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========== Responsive Enhancements ========== */
+@media (max-width: 768px) {
+  .fs-data-grid {
+    grid-template-columns: 1fr;
+    gap: var(--fs-space-md);
+  }
+  
+  .fs-modal-content {
+    width: 95%;
+    padding: var(--fs-space-lg);
+  }
+  
+  .container {
+    padding: 0 var(--fs-space-md);
+  }
+  
+  .fs-header {
+    padding: var(--fs-space-sm) 0;
+  }
+  
+  .nav-links {
+    display: none;
+  }
+  
+  .menu-toggle {
+    display: block !important;
+  }
+  
+  #side-nav {
+    width: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .fs-toast-container {
+    left: var(--fs-space-sm);
+    right: var(--fs-space-sm);
+    max-width: none;
+  }
+  
+  .section {
+    padding: var(--fs-space-xl) 0;
+  }
+}
   z-index: 1000;
   padding: var(--space-unit);
   transition: transform 0.3s ease;
